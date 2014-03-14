@@ -3,37 +3,25 @@ angular.module('myApp')
 {
 	var data = [];
 	var currentContent = null;
-	var observerCallbacks = [];
-	var pop = Popcorn("#myvideo");
+	var pop = Popcorn("#myvideo"); // initialise Popcorn JS with video tag
+	// Load json file with additionnal video content
 	$http.get('data-events/video-content-events.json').success(function (res)
 	{
 		data = res;
-		data.forEach(function (item)
+		data.forEach(function (item) // loop through content
 		{
-			pop.moreContent(item);
+			pop.moreContent(item); // register plugin for each additionnal video content
 		});
 	});
 	var factory = {
-		pop: pop,
-		selected: function (newVal)
+		pop: pop, // retrieve popcorn object
+		selected: function (newVal) // retrive current content
 		{
 			if(newVal) {
 				currentContent = newVal;
 				factory.notifyObservers();
 			}
 			return currentContent;
-		},
-		// Service Observer utilities
-		registerObserverCallback : function (callback)
-		{
-			observerCallbacks.push(callback);
-		},
-		notifyObservers : function ()
-		{
-			angular.forEach(observerCallbacks, function (callback)
-			{
-				callback();
-		    });
 		}
 	};
 	return factory;
