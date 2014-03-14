@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+	<head>
+		<meta charset="utf-8">
+		<title>index</title>
+	</head>
+	<body>
+		<video id="myvideo" width="320" height="180" controls>
+			<source src="http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4" type="video/mp4" />
+		</video>
+		<div ng-controller="MoreContentController" class="more-content-controller">
+			<more-content></more-content>
+		</div>
+		<script src="bower_components/angular/angular.js" ></script>
+		<script src="bower_components/angular-route/angular-route.js" ></script>
+		<script src="bower_components/angular-sanitize/angular-sanitize.js" ></script>
+		<script src="app/main.js" ></script>
+		<script src="app/controllers/MoreContentController.js" ></script>
+		<script src="app/services/MoreContentServices.js" ></script>
+		<script src="app/directives/MoreContentDirective.js" ></script>
+		<script src="vendors/popcorn.js" ></script>
+		<script src="plugins/popcorn.moreContent.js" ></script>
+	</body>
+</html>
